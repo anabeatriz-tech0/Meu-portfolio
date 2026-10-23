@@ -2115,3 +2115,175 @@ footer {
     }
 
 }
+
+
+
+
+
+/* =========================
+   PÁGINA CURRÍCULO
+========================= */
+
+.curriculo {
+    max-width: 1000px;
+    margin: auto;
+    padding: 70px 30px 80px;
+}
+
+.curriculo .titulo-pagina {
+    margin-bottom: 55px;
+}
+
+.curriculo .titulo-pagina span {
+    color: var(--vinho);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.curriculo .titulo-pagina h1 {
+    font-family: Georgia, serif;
+    color: var(--vinho);
+    font-size: 48px;
+    margin-top: 12px;
+}
+
+.curriculo .titulo-pagina p {
+    max-width: 600px;
+    margin: 20px auto 0;
+    color: #666;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.curriculo-conteudo {
+    max-width: 850px;
+    margin: auto;
+}
+
+.curriculo-bloco {
+    display: flex;
+    align-items: flex-start;
+    gap: 22px;
+    padding: 25px 10px;
+    border-bottom: 1px solid var(--borda);
+}
+
+.curriculo-icone {
+    width: 55px;
+    height: 55px;
+    min-width: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--vinho);
+    color: white;
+    border-radius: 50%;
+    font-size: 21px;
+}
+
+.curriculo-bloco h2 {
+    font-family: Georgia, serif;
+    font-size: 23px;
+    font-weight: normal;
+    color: var(--vinho);
+    margin-bottom: 12px;
+}
+
+.curriculo-bloco p,
+.curriculo-bloco li {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.curriculo-bloco ul {
+    padding-left: 20px;
+}
+
+.curriculo-bloco strong {
+    color: var(--vinho);
+}
+
+.curriculo-acoes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.curriculo-acoes button {
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .curriculo {
+        padding: 50px 20px 60px;
+    }
+
+    .curriculo .titulo-pagina h1 {
+        font-size: 38px;
+    }
+
+    .curriculo .titulo-pagina p {
+        font-size: 14px;
+    }
+
+    .curriculo-bloco {
+        gap: 14px;
+        padding: 22px 0;
+    }
+
+    .curriculo-icone {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        font-size: 17px;
+    }
+
+    .curriculo-bloco h2 {
+        font-size: 20px;
+    }
+
+    .curriculo-acoes {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .curriculo-acoes .btn-principal,
+    .curriculo-acoes .btn-secundario {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        min-height: 44px;
+        text-align: center;
+    }
+}
+
+/* Impressão e geração do PDF */
+
+@media print {
+    header,
+    footer,
+    .curriculo-acoes {
+        display: none !important;
+    }
+
+    .curriculo {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .curriculo-bloco {
+        break-inside: avoid;
+    }
+
+    body {
+        background: white;
+    }
+}

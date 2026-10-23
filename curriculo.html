@@ -1,266 +1,141 @@
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Currículo | Portfólio Escolar</title>
+
+    <title>Currículo | Ana Beatriz</title>
 
     <link rel="stylesheet" href="style.css">
 
     <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-    <style>
-        .curriculo-page {
-            width: min(100% - 32px, 900px);
-            margin: 45px auto;
-        }
-
-        .curriculo-card {
-            background: #ffffff;
-            border: 1px solid #eadfe0;
-            border-radius: 16px;
-            padding: 40px;
-            box-shadow: 0 8px 25px rgba(80, 0, 17, 0.08);
-        }
-
-        .curriculo-titulo {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .curriculo-titulo h1 {
-            color: #720019;
-            font-size: clamp(28px, 5vw, 40px);
-            margin-bottom: 10px;
-        }
-
-        .curriculo-titulo p {
-            color: #666666;
-            line-height: 1.7;
-        }
-
-        .curriculo-secao {
-            margin-top: 28px;
-        }
-
-        .curriculo-secao h2 {
-            color: #720019;
-            font-size: 20px;
-            border-bottom: 2px solid #720019;
-            padding-bottom: 8px;
-            margin-bottom: 14px;
-        }
-
-        .curriculo-secao p,
-        .curriculo-secao li {
-            color: #444444;
-            line-height: 1.8;
-            overflow-wrap: anywhere;
-        }
-
-        .curriculo-secao ul {
-            padding-left: 22px;
-        }
-
-        .curriculo-acoes {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 14px;
-            margin-top: 30px;
-        }
-
-        .btn-curriculo {
-            border: 2px solid #720019;
-            border-radius: 8px;
-            padding: 13px 20px;
-            background: #720019;
-            color: #ffffff;
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 9px;
-            min-height: 46px;
-        }
-
-        .btn-curriculo:hover {
-            background: #500011;
-            border-color: #500011;
-        }
-
-        .btn-voltar {
-            background: #ffffff;
-            color: #720019;
-        }
-
-        .btn-voltar:hover {
-            background: #faf0f2;
-            color: #500011;
-        }
-
-        @media (max-width: 600px) {
-            .curriculo-page {
-                width: calc(100% - 24px);
-                margin: 25px auto;
-            }
-
-            .curriculo-card {
-                padding: 22px 18px;
-                border-radius: 12px;
-            }
-
-            .curriculo-secao h2 {
-                font-size: 18px;
-            }
-
-            .curriculo-acoes {
-                flex-direction: column;
-            }
-
-            .btn-curriculo {
-                width: 100%;
-            }
-        }
-
-        /* Formato da página ao imprimir ou salvar como PDF */
-        @media print {
-            body {
-                background: #ffffff !important;
-                color: #222222 !important;
-            }
-
-            header,
-            footer,
-            .curriculo-acoes {
-                display: none !important;
-            }
-
-            .curriculo-page {
-                width: 100%;
-                margin: 0;
-            }
-
-            .curriculo-card {
-                border: none;
-                border-radius: 0;
-                box-shadow: none;
-                padding: 0;
-            }
-
-            .curriculo-secao {
-                break-inside: avoid;
-            }
-
-            .curriculo-titulo h1,
-            .curriculo-secao h2 {
-                color: #720019 !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-        }
-    </style>
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
 
     <header>
-        <div class="logo">AB</div>
+        <div class="logo">AB.</div>
 
         <nav>
             <a href="index.html">INÍCIO</a>
-            <a href="sobre.html">SOBRE MIM</a>
-            <a href="objetivos.html">OBJETIVOS</a>
-            <a href="projetos.html">PROJETOS</a>
             <a href="areas.html">ÁREAS</a>
             <a href="contato.html">CONTATO</a>
+            <a href="#" onclick="sair(); return false;">SAIR</a>
         </nav>
     </header>
 
-    <main class="curriculo-page">
+    <main class="curriculo">
 
-        <article class="curriculo-card">
+        <section class="titulo-pagina">
+            <span>TRAJETÓRIA ACADÊMICA</span>
+            <h1>Meu Currículo</h1>
+            <div class="linha-titulo"></div>
+            <p>
+                Formação, conhecimentos e habilidades desenvolvidos
+                ao longo da minha trajetória escolar.
+            </p>
+        </section>
 
-            <div class="curriculo-titulo">
-                <h1>Meu Currículo</h1>
-                <p>
-                    Conheça minha formação escolar, meus conhecimentos
-                    e minhas habilidades.
-                </p>
+        <section class="curriculo-conteudo">
+
+            <div class="curriculo-bloco">
+                <div class="curriculo-icone">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <div>
+                    <h2>Apresentação</h2>
+                    <p>
+                        Sou estudante do Ensino Médio e busco ampliar
+                        meus conhecimentos, desenvolver minhas habilidades
+                        e aprender por meio de experiências e projetos.
+                    </p>
+                </div>
             </div>
 
-            <section class="curriculo-secao">
-                <h2><i class="fa-solid fa-user"></i> Apresentação</h2>
-                <p>
-                    Sou estudante da 3ª série do Ensino Médio no SESI
-                    e curso Informática para a Internet no SENAI.
-                    Busco ampliar meus conhecimentos, desenvolver minhas
-                    habilidades e me preparar para novas oportunidades.
-                </p>
-            </section>
+            <div class="curriculo-bloco">
+                <div class="curriculo-icone">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
 
-            <section class="curriculo-secao">
-                <h2><i class="fa-solid fa-graduation-cap"></i> Formação</h2>
-                <ul>
-                    <li>
-                        <strong>Ensino Médio:</strong>
-                        3ª série — SESI.
-                    </li>
-                    <li>
-                        <strong>Curso:</strong>
-                        Informática para a Internet — SENAI.
-                    </li>
-                </ul>
-            </section>
-
-            <section class="curriculo-secao">
-                <h2><i class="fa-solid fa-laptop"></i> Conhecimentos</h2>
-                <ul>
-                    <li>Conhecimentos básicos de HTML, CSS e JavaScript.</li>
-                    <li>Desenvolvimento de projetos escolares.</li>
-                    <li>Organização de atividades e trabalhos em equipe.</li>
-                </ul>
-            </section>
-
-            <section class="curriculo-secao">
-                <h2><i class="fa-solid fa-star"></i> Habilidades</h2>
-                <ul>
-                    <li>Organização e responsabilidade.</li>
-                    <li>Dedicação aos estudos.</li>
-                    <li>Interesse em aprender coisas novas.</li>
-                    <li>Colaboração em projetos escolares.</li>
-                </ul>
-            </section>
-
-            <section class="curriculo-secao">
-                <h2><i class="fa-solid fa-bullseye"></i> Objetivo</h2>
-                <p>
-                    Continuar minha formação acadêmica, desenvolver
-                    minhas competências e me preparar para alcançar
-                    meus objetivos pessoais e profissionais.
-                </p>
-            </section>
-
-            <div class="curriculo-acoes">
-                <button class="btn-curriculo" onclick="window.print()">
-                    <i class="fa-solid fa-file-pdf"></i>
-                    Baixar currículo em PDF
-                </button>
-
-                <a href="index.html" class="btn-curriculo btn-voltar">
-                    <i class="fa-solid fa-arrow-left"></i>
-                    Voltar ao início
-                </a>
+                <div>
+                    <h2>Formação acadêmica</h2>
+                    <p><strong>SESI</strong> — Ensino Médio, 3ª série.</p>
+                    <p><strong>SENAI</strong> — Curso de Informática para a Internet.</p>
+                </div>
             </div>
 
-        </article>
+            <div class="curriculo-bloco">
+                <div class="curriculo-icone">
+                    <i class="fa-solid fa-laptop-code"></i>
+                </div>
+
+                <div>
+                    <h2>Conhecimentos</h2>
+                    <ul>
+                        <li>Fundamentos de HTML, CSS e JavaScript.</li>
+                        <li>Desenvolvimento de projetos escolares.</li>
+                        <li>Organização de trabalhos e atividades.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="curriculo-bloco">
+                <div class="curriculo-icone">
+                    <i class="fa-solid fa-star"></i>
+                </div>
+
+                <div>
+                    <h2>Habilidades</h2>
+                    <ul>
+                        <li>Responsabilidade e organização.</li>
+                        <li>Dedicação aos estudos.</li>
+                        <li>Criatividade e colaboração.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="curriculo-bloco">
+                <div class="curriculo-icone">
+                    <i class="fa-solid fa-bullseye"></i>
+                </div>
+
+                <div>
+                    <h2>Objetivo</h2>
+                    <p>
+                        Dar continuidade à minha formação acadêmica,
+                        desenvolver minhas competências e me preparar
+                        para futuras oportunidades.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+        <div class="curriculo-acoes">
+            <button class="btn-principal" onclick="window.print()">
+                <i class="fa-solid fa-file-pdf"></i>
+                SALVAR CURRÍCULO EM PDF
+            </button>
+
+            <a href="index.html" class="btn-secundario">
+                VOLTAR AO INÍCIO
+            </a>
+        </div>
 
     </main>
+
+    <footer>
+        <p class="tutores">
+            <strong>Tutores:</strong>
+            Cleiton Jericó • Regiane Leal
+        </p>
+
+        <p>© 2026 Ana Beatriz. Todos os direitos reservados.</p>
+    </footer>
 
     <script src="auth.js"></script>
 
