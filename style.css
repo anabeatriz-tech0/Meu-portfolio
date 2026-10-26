@@ -2152,3 +2152,10 @@ footer {
 @media(max-width:850px) { nav { gap: 14px; flex-wrap: wrap; justify-content: flex-end; } nav a { font-size: 11px; } .galeria-anexos { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 @media(max-width:600px) { header { height: auto; min-height: 76px; padding: 15px 5%; gap: 15px; align-items: flex-start; } nav { gap: 12px; } nav a { padding: 6px 0; } .nova-pagina { margin-top: 35px; padding: 0 15px; } .nova-cabecalho h1 { font-size: 34px; } .curriculo-folha { padding: 24px 19px; } .galeria-anexos { grid-template-columns: 1fr; } .anexo-imagem { height: 250px; } }
 @media print { @page { size: A4; margin: 1.5cm; } header, footer, .nova-cabecalho, .curriculo-acoes, .nota-pagina { display: none !important; } body { background: white !important; } .nova-pagina { max-width: none; margin: 0; padding: 0; } .curriculo-folha { border: 0; border-radius: 0; box-shadow: none; padding: 0; } .curriculo-secao { break-inside: avoid; } }
+
+
+/* Ajustes dos atalhos da página inicial */
+.cards { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
+.cards .card { min-width: 0; }
+@media (max-width: 850px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-left: 18px; margin-right: 18px; } }
+@media (max-width: 560px) { .cards { grid-template-columns: 1fr; } }
