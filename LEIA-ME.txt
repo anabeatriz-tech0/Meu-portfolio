@@ -1,0 +1,8 @@
+PORTFÓLIO ATUALIZADO
+
+1. Copie os arquivos desta pasta para a pasta do seu projeto, mantendo os nomes dos arquivos. Faça uma cópia de segurança antes de substituir arquivos existentes.
+2. O menu das páginas do portfólio foi atualizado com Currículo, Anexos e Referências.
+3. Currículo: confira e-mail e informações antes de salvar como PDF pelo botão.
+4. Anexos: adicione imagens em img/anexos e siga o exemplo comentado em anexos.html.
+5. Referências: substitua os modelos pelas fontes realmente utilizadas.
+6. As páginas continuam usando o login existente (auth.js).

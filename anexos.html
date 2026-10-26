@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Anexos | Ana Beatriz</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"><script src="auth.js"></script></head><body><header><div class="logo">AB.</div><nav>
+            <a href="index.html">INÍCIO</a>
+            <a href="areas.html">ÁREAS</a>
+            <a href="curriculo.html">CURRÍCULO</a>
+            <a href="anexos.html" class="ativo">ANEXOS</a>
+            <a href="referencias.html">REFERÊNCIAS</a>
+            <a href="contato.html">CONTATO</a>
+            <a href="#" onclick="sair(); return false;">SAIR</a>
+        </nav></header><main class="nova-pagina"><div class="nova-cabecalho"><span class="sobretitulo">REGISTROS VISUAIS</span><h1>Meus Anexos</h1><p>Imagens, registros e materiais que fazem parte da minha trajetória escolar.</p></div><section class="galeria-anexos" aria-label="Galeria de anexos">
+<div class="anexo-vazio"><i class="fa-regular fa-images" style="font-size:30px;color:var(--vinho)"></i><br><strong>Adicione suas imagens à galeria</strong><br>Crie a pasta <code>img/anexos</code> no projeto e, no código abaixo, duplique um bloco de imagem para cada arquivo. Ao clicar, a foto abre ampliada.</div>
+<!-- EXEMPLO: remova os comentários e troque o caminho pela imagem real.
+<img class="anexo-imagem" src="img/anexos/foto1.jpg" alt="Descrição da imagem" onclick="abrirImagem(this)">
+<img class="anexo-imagem" src="img/anexos/foto2.jpg" alt="Descrição da imagem" onclick="abrirImagem(this)">
+--></section></main>
+<div id="modalImagem" class="modal-imagem" role="dialog" aria-label="Imagem ampliada" onclick="if(event.target===this) fecharImagem()"><button class="fechar-modal" onclick="fecharImagem()" aria-label="Fechar">&times;</button><img id="imagemAmpliada" src="" alt="Imagem ampliada"></div><script src="script.js"></script></body></html>
