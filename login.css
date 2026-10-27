@@ -10,6 +10,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
         font-family: Georgia, "Times New Roman", serif;
 
         background:
@@ -25,7 +26,8 @@
             ),
             #720019;
 
-        overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: auto;
     }
 
     /* DETALHES DECORATIVOS */
@@ -288,3 +290,28 @@
             font-size: 28px;
         }
     }
+
+
+/* Rodapé presente também na tela de login */
+.rodape-login {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    margin-top: auto;
+    padding: 22px 16px;
+    color: #fff;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.8;
+    background: rgba(65, 0, 14, 0.28);
+}
+
+.card {
+    margin: auto;
+    flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+    .card { width: calc(100% - 32px); padding: 35px 25px; }
+}

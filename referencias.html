@@ -8,113 +8,56 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="auth.js"></script>
     <style>
-        .form-referencia { background:#fff; border:1px solid var(--borda); border-radius:12px; padding:25px; margin-bottom:25px; }
-        .form-referencia label { display:block; color:var(--vinho); font-weight:600; margin:0 0 8px; }
-        .form-referencia input { width:100%; box-sizing:border-box; padding:13px 14px; border:1px solid var(--borda); border-radius:7px; margin-bottom:17px; font:inherit; color:var(--texto); }
-        .form-referencia input:focus { outline:2px solid #d8b9c0; border-color:var(--vinho); }
-        .referencia-card { display:flex; align-items:center; justify-content:space-between; gap:18px; }
-        .referencia-info { min-width:0; }
-        .referencia-card h2 { overflow-wrap:anywhere; }
-        .referencia-acoes { display:flex; align-items:center; gap:12px; flex-shrink:0; }
-        .remover-referencia { background:var(--vinho); color:#fff; border:0; border-radius:7px; padding:10px 12px; cursor:pointer; }
-        .lista-vazia { text-align:center; color:#71676a; padding:25px; border:1px dashed #c9aeb3; border-radius:10px; }
-        @media(max-width:600px) { .referencia-card { align-items:flex-start; flex-direction:column; } .referencia-acoes { width:100%; justify-content:space-between; } }
+        .referencias-pagina { max-width: 950px; margin: 55px auto; padding: 0 24px 60px; }
+        .referencias-topo { text-align:center; margin-bottom:35px; }
+        .referencias-topo span { color:var(--vinho); font-size:12px; font-weight:bold; letter-spacing:3px; }
+        .referencias-topo h1 { color:var(--vinho); font:42px Georgia,serif; margin:12px 0; }
+        .referencias-topo p { color:#71676a; line-height:1.7; }
+        .referencias-lista { display:grid; gap:14px; }
+        .referencia-item { display:flex; align-items:center; justify-content:space-between; gap:20px; background:#fff; border:1px solid var(--borda); border-radius:10px; padding:20px 22px; }
+        .referencia-item h2 { font:20px Georgia,serif; color:var(--vinho); margin:0 0 8px; }
+        .referencia-item a { color:#6f2638; overflow-wrap:anywhere; }
+        .referencia-item .abrir-fonte { flex-shrink:0; display:inline-block; padding:10px 14px; border-radius:7px; background:var(--vinho); color:#fff; text-decoration:none; font-size:13px; }
+        .referencia-vazia { text-align:center; color:#71676a; padding:25px; border:1px dashed #c9aeb3; border-radius:10px; }
+        @media(max-width:600px) { .referencia-item {align-items:flex-start; flex-direction:column;} .referencias-topo h1 {font-size:34px;} }
     </style>
 </head>
 <body>
     <header>
         <div class="logo">AB.</div>
         <nav>
-            <a href="index.html">INÍCIO</a><a href="areas.html">ÁREAS</a><a href="curriculo.html">CURRÍCULO</a>
+            <a href="index.html">INÍCIO</a><a href="sobre.html">SOBRE MIM</a>
+            <a href="objetivos.html">OBJETIVOS</a><a href="projetos.html">PROJETOS</a>
+            <a href="areas.html">ÁREAS</a><a href="curriculo.html">CURRÍCULO</a>
             <a href="anexos.html">ANEXOS</a><a href="referencias.html" class="ativo">REFERÊNCIAS</a>
             <a href="contato.html">CONTATO</a><a href="#" onclick="sair(); return false;">SAIR</a>
         </nav>
     </header>
-    <main class="nova-pagina">
-        <div class="nova-cabecalho">
-            <span class="sobretitulo">FONTES DE PESQUISA</span>
+    <main class="referencias-pagina">
+        <div class="referencias-topo">
+            <span>FONTES DE PESQUISA</span>
             <h1>Referências</h1>
-            <p>Adicione o nome do site e o link das fontes que você consultou.</p>
+            <p>Fontes consultadas durante as pesquisas e atividades desenvolvidas ao longo do ano.</p>
         </div>
-        <form id="formReferencia" class="form-referencia">
-            <label for="nomeSite">Nome do site</label>
-            <input id="nomeSite" type="text" placeholder="Ex.: Brasil Escola" required maxlength="120">
-            <label for="linkSite">Link do site</label>
-            <input id="linkSite" type="url" placeholder="https://www.exemplo.com.br" required>
-            <button class="nova-botao" type="submit"><i class="fa-solid fa-plus"></i> Adicionar referência</button>
-        </form>
-        <section id="listaReferencias" class="referencias-lista" aria-live="polite"></section>
-        <p style="font-size:13px;color:#71676a;line-height:1.7;margin-top:18px">As referências ficam salvas neste navegador e neste dispositivo.</p>
+        <section class="referencias-lista" aria-label="Lista de referências">
+            <!-- PARA ADICIONAR UMA FONTE: copie o bloco article abaixo, troque o nome e o link.
+                 As referências são cadastradas diretamente neste arquivo pelo VS Code. -->
+            <!-- EXEMPLO:
+            <article class="referencia-item">
+                <div>
+                    <h2>Nome do site</h2>
+                    <a href="https://www.exemplo.com" target="_blank" rel="noopener noreferrer">https://www.exemplo.com</a>
+                </div>
+                <a class="abrir-fonte" href="https://www.exemplo.com" target="_blank" rel="noopener noreferrer">Acessar site <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </article>
+            -->
+        </section>
     </main>
-    <script>
-        const CHAVE_REFERENCIAS = 'portfolio_referencias_ana';
-        const formularioReferencia = document.getElementById('formReferencia');
-        const listaReferencias = document.getElementById('listaReferencias');
-        let referencias = JSON.parse(localStorage.getItem(CHAVE_REFERENCIAS) || '[]');
 
-        function salvarReferencias() {
-            localStorage.setItem(CHAVE_REFERENCIAS, JSON.stringify(referencias));
-            mostrarReferencias();
-        }
+    <footer>
+        <p class="tutores"><strong>Tutores:</strong> Cleiton Jericó • Regiane Leal</p>
+        <p>© 2026 Ana Beatriz. Todos os direitos reservados.</p>
+    </footer>
 
-        function mostrarReferencias() {
-            listaReferencias.replaceChildren();
-            if (referencias.length === 0) {
-                const vazio = document.createElement('div');
-                vazio.className = 'lista-vazia';
-                vazio.textContent = 'Nenhuma referência adicionada ainda.';
-                listaReferencias.appendChild(vazio);
-                return;
-            }
-            referencias.forEach((referencia, indice) => {
-                const card = document.createElement('article');
-                card.className = 'referencia-card';
-                const info = document.createElement('div');
-                info.className = 'referencia-info';
-                const titulo = document.createElement('h2');
-                titulo.textContent = referencia.nome;
-                const link = document.createElement('a');
-                link.href = referencia.link;
-                link.target = '_blank';
-                link.rel = 'noopener noreferrer';
-                link.textContent = referencia.link;
-                link.style.overflowWrap = 'anywhere';
-                info.append(titulo, link);
-                const acoes = document.createElement('div');
-                acoes.className = 'referencia-acoes';
-                const abrir = document.createElement('a');
-                abrir.className = 'nova-botao';
-                abrir.href = referencia.link;
-                abrir.target = '_blank';
-                abrir.rel = 'noopener noreferrer';
-                abrir.textContent = 'Abrir site';
-                const remover = document.createElement('button');
-                remover.type = 'button'; remover.className = 'remover-referencia';
-                remover.title = 'Excluir referência'; remover.setAttribute('aria-label', 'Excluir ' + referencia.nome);
-                remover.innerHTML = '<i class="fa-solid fa-trash"></i>';
-                remover.addEventListener('click', () => { referencias.splice(indice, 1); salvarReferencias(); });
-                acoes.append(abrir, remover);
-                card.append(info, acoes);
-                listaReferencias.appendChild(card);
-            });
-        }
-
-        formularioReferencia.addEventListener('submit', (evento) => {
-            evento.preventDefault();
-            const nome = document.getElementById('nomeSite').value.trim();
-            const link = document.getElementById('linkSite').value.trim();
-            if (!nome || !link) return;
-            try {
-                const url = new URL(link);
-                if (!['http:', 'https:'].includes(url.protocol)) throw new Error('Link inválido');
-                referencias.push({ nome, link: url.href });
-                salvarReferencias();
-                formularioReferencia.reset();
-            } catch {
-                alert('Digite um link válido começando com https:// ou http://.');
-            }
-        });
-        mostrarReferencias();
-    </script>
 </body>
 </html>

@@ -8,152 +8,59 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="auth.js"></script>
     <style>
-        .anexos-controles { background:#fff; border:1px solid var(--borda); border-radius:12px; padding:24px; margin-bottom:25px; }
-        .anexos-controles p { color:#71676a; line-height:1.7; margin:0 0 17px; }
-        .seletor-imagens { display:block; width:100%; box-sizing:border-box; padding:14px; border:1px dashed #c9aeb3; border-radius:8px; margin-bottom:16px; background:#fff; }
-        .anexo-item { position:relative; }
-        .anexo-item .anexo-imagem { cursor:zoom-in; }
-        .excluir-anexo { position:absolute; top:10px; right:10px; width:39px; height:39px; border:0; border-radius:50%; background:var(--vinho); color:#fff; cursor:pointer; box-shadow:0 3px 10px #0002; }
-        .anexo-legenda { font-size:13px; color:#71676a; margin-top:8px; overflow-wrap:anywhere; }
-        .mensagem-anexos { color:#71676a; font-size:13px; margin-top:14px; }
+        .anexos-pagina { max-width: 1100px; margin: 55px auto; padding: 0 24px 60px; }
+        .anexos-topo { text-align: center; margin-bottom: 35px; }
+        .anexos-topo span { color: var(--vinho); font-size: 12px; font-weight: bold; letter-spacing: 3px; }
+        .anexos-topo h1 { color: var(--vinho); font: 42px Georgia,serif; margin: 12px 0; }
+        .anexos-topo p { color: #71676a; line-height: 1.7; }
+        .galeria-estatica { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 22px; }
+        .anexo-card { margin: 0; background: #fff; border: 1px solid var(--borda); border-radius: 12px; padding: 10px; overflow: hidden; }
+        .anexo-card img { display:block; width:100%; height:250px; object-fit:cover; border-radius:8px; cursor: zoom-in; transition: transform .25s; }
+        .anexo-card img:hover { transform: scale(1.025); }
+        .anexo-card figcaption { color: var(--texto); padding: 12px 5px 5px; font-size: 14px; }
+        .anexos-aviso { color:#71676a; text-align:center; font-size:13px; margin-top:25px; }
+        @media(max-width:800px) { .galeria-estatica { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+        @media(max-width:520px) { .galeria-estatica { grid-template-columns:1fr; } .anexo-card img {height:230px;} .anexos-topo h1 {font-size:34px;} }
     </style>
 </head>
 <body>
     <header>
         <div class="logo">AB.</div>
         <nav>
-            <a href="index.html">INÍCIO</a><a href="areas.html">ÁREAS</a><a href="curriculo.html">CURRÍCULO</a>
+            <a href="index.html">INÍCIO</a><a href="sobre.html">SOBRE MIM</a>
+            <a href="objetivos.html">OBJETIVOS</a><a href="projetos.html">PROJETOS</a>
+            <a href="areas.html">ÁREAS</a><a href="curriculo.html">CURRÍCULO</a>
             <a href="anexos.html" class="ativo">ANEXOS</a><a href="referencias.html">REFERÊNCIAS</a>
             <a href="contato.html">CONTATO</a><a href="#" onclick="sair(); return false;">SAIR</a>
         </nav>
     </header>
-    <main class="nova-pagina">
-        <div class="nova-cabecalho">
-            <span class="sobretitulo">REGISTROS VISUAIS</span>
+    <main class="anexos-pagina">
+        <div class="anexos-topo">
+            <span>REGISTROS VISUAIS</span>
             <h1>Meus Anexos</h1>
-            <p>Adicione várias imagens de uma só vez. Clique em qualquer imagem para ampliá-la.</p>
+            <p>Registros visuais de atividades, trabalhos e experiências da minha trajetória escolar.</p>
         </div>
-        <section class="anexos-controles">
-            <p>Selecione uma ou várias imagens do seu computador. Elas serão guardadas neste navegador, neste dispositivo.</p>
-            <input class="seletor-imagens" id="selecionarImagens" type="file" accept="image/*" multiple>
-            <button type="button" id="botaoAdicionarImagens" class="nova-botao"><i class="fa-solid fa-images"></i> Adicionar imagens selecionadas</button>
-            <div id="mensagemAnexos" class="mensagem-anexos" aria-live="polite"></div>
+        <section class="galeria-estatica" aria-label="Galeria de anexos">
+            <!-- PARA ADICIONAR FOTOS: coloque os arquivos na pasta img/anexos e copie um bloco figure abaixo.
+                 Troque o caminho da imagem e o texto da legenda. Não existe formulário de envio no site. -->
+            <!-- EXEMPLO:
+            <figure class="anexo-card">
+                <img src="img/anexos/nome-da-foto.jpg" alt="Descrição da foto" onclick="abrirImagem(this)">
+                <figcaption>Descrição breve da imagem</figcaption>
+            </figure>
+            -->
         </section>
-        <section id="galeriaAnexos" class="galeria-anexos" aria-label="Galeria de anexos"></section>
     </main>
     <div id="modalImagem" class="modal-imagem" role="dialog" aria-label="Imagem ampliada" aria-modal="true">
-        <button class="fechar-modal" id="fecharModal" aria-label="Fechar imagem">&times;</button>
+        <button class="fechar-modal" onclick="fecharImagem()" aria-label="Fechar imagem">&times;</button>
         <img id="imagemAmpliada" src="" alt="Imagem ampliada">
     </div>
     <script src="script.js"></script>
-    <script>
-        // IndexedDB permite guardar várias imagens sem depender do pequeno limite do localStorage.
-        const NOME_BANCO = 'portfolio_anexos_ana';
-        const NOME_ARMAZENAMENTO = 'imagens';
-        const seletorImagens = document.getElementById('selecionarImagens');
-        const botaoAdicionarImagens = document.getElementById('botaoAdicionarImagens');
-        const galeriaAnexos = document.getElementById('galeriaAnexos');
-        const mensagemAnexos = document.getElementById('mensagemAnexos');
-        let bancoAnexos;
-        let urlsTemporarias = [];
 
-        function abrirBanco() {
-            return new Promise((resolve, reject) => {
-                const pedido = indexedDB.open(NOME_BANCO, 1);
-                pedido.onupgradeneeded = () => {
-                    const banco = pedido.result;
-                    if (!banco.objectStoreNames.contains(NOME_ARMAZENAMENTO)) {
-                        banco.createObjectStore(NOME_ARMAZENAMENTO, { keyPath: 'id', autoIncrement: true });
-                    }
-                };
-                pedido.onsuccess = () => resolve(pedido.result);
-                pedido.onerror = () => reject(pedido.error);
-            });
-        }
+    <footer>
+        <p class="tutores"><strong>Tutores:</strong> Cleiton Jericó • Regiane Leal</p>
+        <p>© 2026 Ana Beatriz. Todos os direitos reservados.</p>
+    </footer>
 
-        function executarBanco(modo, acao) {
-            return new Promise((resolve, reject) => {
-                const transacao = bancoAnexos.transaction(NOME_ARMAZENAMENTO, modo);
-                const armazenamento = transacao.objectStore(NOME_ARMAZENAMENTO);
-                const pedido = acao(armazenamento);
-                if (pedido) {
-                    pedido.onsuccess = () => resolve(pedido.result);
-                    pedido.onerror = () => reject(pedido.error);
-                } else {
-                    transacao.oncomplete = () => resolve();
-                    transacao.onerror = () => reject(transacao.error);
-                }
-            });
-        }
-
-        async function mostrarAnexos() {
-            urlsTemporarias.forEach(URL.revokeObjectURL);
-            urlsTemporarias = [];
-            galeriaAnexos.replaceChildren();
-            const imagens = await executarBanco('readonly', armazenamento => armazenamento.getAll());
-            if (!imagens.length) {
-                const vazio = document.createElement('div');
-                vazio.className = 'anexo-vazio';
-                vazio.innerHTML = '<i class="fa-regular fa-images" style="font-size:30px;color:var(--vinho)"></i><br><strong>Nenhuma imagem adicionada</strong><br>Use o botão acima para escolher suas fotos.';
-                galeriaAnexos.appendChild(vazio);
-                return;
-            }
-            imagens.forEach(imagem => {
-                const item = document.createElement('article');
-                item.className = 'anexo-item';
-                const url = URL.createObjectURL(imagem.arquivo);
-                urlsTemporarias.push(url);
-                const foto = document.createElement('img');
-                foto.className = 'anexo-imagem'; foto.src = url; foto.alt = imagem.nome;
-                foto.title = 'Clique para ampliar'; foto.addEventListener('click', () => abrirImagem(foto));
-                const legenda = document.createElement('p'); legenda.className = 'anexo-legenda'; legenda.textContent = imagem.nome;
-                const excluir = document.createElement('button'); excluir.type = 'button';
-                excluir.className = 'excluir-anexo'; excluir.title = 'Excluir imagem'; excluir.setAttribute('aria-label', 'Excluir ' + imagem.nome);
-                excluir.innerHTML = '<i class="fa-solid fa-trash"></i>';
-                excluir.addEventListener('click', async () => {
-                    if (confirm('Deseja excluir esta imagem dos anexos?')) {
-                        await executarBanco('readwrite', armazenamento => armazenamento.delete(imagem.id));
-                        await mostrarAnexos();
-                    }
-                });
-                item.append(foto, excluir, legenda);
-                galeriaAnexos.appendChild(item);
-            });
-        }
-
-        botaoAdicionarImagens.addEventListener('click', async () => {
-            const arquivos = Array.from(seletorImagens.files || []).filter(arquivo => arquivo.type.startsWith('image/'));
-            if (!arquivos.length) {
-                mensagemAnexos.textContent = 'Escolha pelo menos uma imagem antes de adicionar.';
-                return;
-            }
-            botaoAdicionarImagens.disabled = true;
-            mensagemAnexos.textContent = 'Adicionando imagens...';
-            try {
-                for (const arquivo of arquivos) {
-                    await executarBanco('readwrite', armazenamento => armazenamento.add({ nome: arquivo.name, arquivo, adicionadoEm: new Date().toISOString() }));
-                }
-                seletorImagens.value = '';
-                mensagemAnexos.textContent = arquivos.length + (arquivos.length === 1 ? ' imagem adicionada com sucesso.' : ' imagens adicionadas com sucesso.');
-                await mostrarAnexos();
-            } catch (erro) {
-                console.error(erro);
-                mensagemAnexos.textContent = 'Não foi possível salvar todas as imagens. Tente selecionar menos arquivos por vez.';
-            } finally {
-                botaoAdicionarImagens.disabled = false;
-            }
-        });
-
-        document.getElementById('fecharModal').addEventListener('click', fecharImagem);
-        (async function iniciarGaleria() {
-            try {
-                bancoAnexos = await abrirBanco();
-                await mostrarAnexos();
-            } catch (erro) {
-                console.error(erro);
-                mensagemAnexos.textContent = 'Seu navegador não conseguiu abrir o armazenamento de imagens. Tente abrir o site no Chrome ou Edge.';
-            }
-        })();
-    </script>
 </body>
 </html>
